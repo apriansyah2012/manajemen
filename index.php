@@ -247,7 +247,7 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT JALAN BPJS</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ralan' AND kd_pj ='A52'"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ralan' AND b.kategori ='BPJS'"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -258,7 +258,7 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT JALAN TUNAI</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ralan' AND kd_pj ='A00'"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ralan' AND b.kategori ='TUNAI'"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>

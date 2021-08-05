@@ -6,7 +6,10 @@ Mapping Kategori Penjamin/Cara Bayar (Sesuaikan dengan Keadaan di tempat Masing-
 
 "ALTER TABLE penjab  ADD COLUMN kategori enum('ASURANSI','PERUSAHAAN','TUNAI','BPJS','BPJSTK','JAMSOS','KEMKES','DLL') AFTER attn"
 
+
+
 Kemudian Tambahkan Tabel berikut :
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 

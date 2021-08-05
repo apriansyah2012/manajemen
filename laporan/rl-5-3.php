@@ -69,9 +69,9 @@ include_once('../layout/sidebar.php');
                                 while($row = fetch_array($query)) {
                                 ?>
                                     <tr>
-                                        <td>32prop</td>
+                                        <td>63prop</td>
                                         <td><?php echo $dataSettings['kabupaten']; ?></td>
-                                        <td>3215056</td>
+                                        <td>6307012</td>
                                         <td><?php echo $dataSettings['nama_instansi']; ?></td>
                                         <td><?php echo $bulanList[$bln]; ?></td>
                                         <td><?php echo date("Y",strtotime($_POST['tgl_akhir'])); ?></td>

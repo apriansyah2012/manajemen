@@ -21,7 +21,7 @@ include_once('../layout/sidebar.php');
                     <div class="card">
                         <div class="header">
                             <h2>
-                                DATA KUNJUNGAN PASIEN  RAWAT JALAN PER DOKTER
+                                DATA KUNJUNGAN PASIEN  VK
                                 <small><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
                             </h2>
                         </div>
@@ -31,7 +31,7 @@ include_once('../layout/sidebar.php');
                                 <thead>
                                     <tr>
                                         
-                                        <th>Klinik</th>
+                                        <th>Tindakan</th>
                                         <th>Dokter</th>
                                         <th>Baru</th>
                                         <th>Lama</th>
@@ -154,14 +154,7 @@ include_once('../layout/sidebar.php');
 'B96',
 'A66',
 'RSD',
-'B99',
-'WMI',
-'B98',
-'CHG',
-'HLS',
-'C05',
-'B37'
-)) as pj, sum(a.kd_pj IN ('-',
+'B99')) as pj, sum(a.kd_pj IN ('-',
 'A5',
 '104',
 'A05',
@@ -234,11 +227,9 @@ include_once('../layout/sidebar.php');
 'A64',
 'A03',
 'A02',
-'A24',
-'A65',
-'B15'
+'A65'
 
-)) as asuransi,sum(a.kd_pj ='A52') as bpjs,sum(a.kd_pj ='A55') as karseh,sum(a.status_lanjut ='Ralan') as rj,sum(a.status_lanjut ='Ranap') as ri, a.no_rkm_medis, sum(d.jk ='L') as Laki,sum(d.jk ='P') as Perempuan from reg_periksa a join poliklinik b join dokter c join pasien d where a.kd_poli=b.kd_poli and a.kd_dokter=c.kd_dokter and a.kd_poli IN ('U0001','U0002','U0003','U0004','U0005','U0006','U0007','U0008','U0009','U0011','U0012','U0013','U0018','U0019','U0024') and a.kd_poli not IN ('IGDK') and a.no_rkm_medis =d.no_rkm_medis";
+)) as asuransi,sum(a.kd_pj ='A52') as bpjs,sum(a.kd_pj ='A55') as karseh,sum(a.status_lanjut ='Ralan') as rj,sum(a.status_lanjut ='Ranap') as ri, a.no_rkm_medis, sum(d.jk ='L') as Laki,sum(d.jk ='P') as Perempuan from reg_periksa a join poliklinik b join dokter c join pasien d where a.kd_poli=b.kd_poli and a.kd_dokter=c.kd_dokter and a.kd_poli IN ('U0001','U0002','U0003','U0004','U0005','U0006','U0007','U0008','U0009','U0011','U0012','U0013','U0018','U0019','U0020','U0024','U0026')and a.no_rkm_medis =d.no_rkm_medis";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
                                   $sql .= " AND a.tgl_registrasi BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";
                                 } else {

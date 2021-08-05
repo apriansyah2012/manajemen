@@ -43,11 +43,12 @@ include_once('../layout/sidebar.php');
                                         <th>Asuransi</th>
                                         <th>BPJS</th>
                                         <th>KAR-SEH</th>
+										<th>KemKes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "select a.no_rawat, a.kd_kamar, a.tgl_masuk,a.tgl_keluar, b.kd_bangsal, c.nm_bangsal,b.kelas, sum(d.status_poli ='Baru') as baru,sum(d.status_poli ='Lama') as lama,d.no_rkm_medis, sum(e.jk='L') as Laki,sum(e.jk='P') as Perempuan,sum(d.kd_pj='A00') as umum, sum(d.kd_pj IN ('B01',
+                                $sql = "select a.no_rawat, a.kd_kamar, a.tgl_masuk,a.tgl_keluar, b.kd_bangsal, c.nm_bangsal,b.kelas, sum(d.status_poli ='Baru') as baru,sum(d.status_poli ='Lama') as lama,d.no_rkm_medis, sum(e.jk='L') as Laki,sum(e.jk='P') as Perempuan,sum(d.kd_pj='A00') as umum,sum(d.kd_pj ='KMK') as kemkes, sum(d.kd_pj IN ('B01',
 'B02',
 'B71',
 'B03',
@@ -259,6 +260,7 @@ include_once('../layout/sidebar.php');
                                         <td><?php echo $row['asuransi']; ?></td>
                                         <td><?php echo $row['bpjs']; ?></td>
                                         <td><?php echo $row['karseh']; ?></td>
+										<td><?php echo $row['kemkes']; ?></td>
                                     </tr>
                                 <?php
                                 $no++;

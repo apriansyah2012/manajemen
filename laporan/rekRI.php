@@ -42,13 +42,15 @@ include_once('../layout/sidebar.php');
                                         <th>PT</th>
                                         <th>Asuransi</th>
                                         <th>BPJS</th>
-                                        <th>JAMSOS</th>
-										<th>Lain-Lain</th>
+                                        <th>KAR-SEH</th>
+					<th>KemKes</th>
+					<th>Lain-Lain</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "select a.no_rawat, a.kd_kamar, a.tgl_masuk,a.tgl_keluar, b.kd_bangsal, c.nm_bangsal,b.kelas, sum(d.status_poli ='Baru') as baru,sum(d.status_poli ='Lama') as lama,d.no_rkm_medis, sum(e.jk='L') as Laki,sum(e.jk='P') as Perempuan,sum(f.kategori='TUNAI') as umum, sum(f.kategori ='PERUSAHAAN') as pj, sum(f.kategori ='ASURANSI') as asuransi,sum(f.kategori ='BPJS') as bpjs,sum(f.kategori ='JAMSOS') as karseh,sum(f.kategori ='DLL') as dll from kamar_inap a join kamar b join bangsal c join reg_periksa  d join pasien e join penjab f WHERE  a.kd_kamar =b.kd_kamar and b.kd_bangsal=c.kd_bangsal and a.no_rawat = d.no_rawat and d.no_rkm_medis = e.no_rkm_medis and a.kd_pj=f.kd_pj and  c.status ='1' and b.statusdata='1'";
+                                $sql = "select a.no_rawat, a.kd_kamar, a.tgl_masuk,a.tgl_keluar, b.kd_bangsal, c.nm_bangsal,b.kelas, sum(d.status_poli ='Baru') as baru,sum(d.status_poli ='Lama') as lama,d.no_rkm_medis, sum(e.jk='L') as Laki,sum(e.jk='P') as Perempuan,sum(f.kategori ='TUNAI') as umum, sum(f.kategori IN ('PERUSAHAAN'
+)) as pj, sum(f.kategori IN ('ASURANSI')) as asuransi,sum(f.kategori ='BPJS') as bpjs,sum(d.kd_pj ='A55') as karseh, sum(f.kategori ='KEMKES') as kemkes,sum(f.kategori ='DLL') as dll from kamar_inap a join kamar b join bangsal c join reg_periksa  d join pasien e join penjab f WHERE  a.kd_kamar =b.kd_kamar and b.kd_bangsal=c.kd_bangsal and a.no_rawat = d.no_rawat and d.no_rkm_medis = e.no_rkm_medis and c.status ='1' and b.statusdata='1' and  d.kd_pj=f.kd_pj";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
                                   $sql .= " AND a.tgl_keluar BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";
                                 } else {
@@ -73,7 +75,9 @@ include_once('../layout/sidebar.php');
                                         <td><?php echo $row['asuransi']; ?></td>
                                         <td><?php echo $row['bpjs']; ?></td>
                                         <td><?php echo $row['karseh']; ?></td>
-										<td><?php echo $row['dll']; ?></td>
+					<td><?php echo $row['kemkes']; ?></td>
+					<td><?php echo $row['dll']; ?></td>
+
                                     </tr>
                                 <?php
                                 $no++;

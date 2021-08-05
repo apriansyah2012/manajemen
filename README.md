@@ -8,7 +8,7 @@ Mapping Kategori Penjamin/Cara Bayar (Sesuaikan dengan Keadaan di tempat Masing-
 
 
 
-Kemudian Tambahkan Tabel berikut :
+# Kemudian Tambahkan Tabel berikut :
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;

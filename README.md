@@ -1,6 +1,7 @@
 # Khanza-Lite
 Khanza Lite Ini adalah Versi Custom dari Khanza Lite 1, di sesuaikan dengan RS saya
-![gambar](https://user-images.githubusercontent.com/26614348/128475802-57ef27f5-0308-4997-8842-c52ea4179d0e.png)
+![gambar](https://user-images.githubusercontent.com/26614348/128476073-8bf7101a-8794-4da2-adef-d258c2ffc441.png)
+
 
 
 Catatan :

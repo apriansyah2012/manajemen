@@ -1,5 +1,7 @@
 # Khanza-Lite
 Khanza Lite Ini adalah Versi Custom dari Khanza Lite 1, di sesuaikan dengan RS saya
+![gambar](https://user-images.githubusercontent.com/26614348/128475802-57ef27f5-0308-4997-8842-c52ea4179d0e.png)
+
 
 Catatan :
 Mapping Kategori Penjamin/Cara Bayar (Sesuaikan dengan Keadaan di tempat Masing-masing) dengan menambahkan Query dibawah ini di dalam database :

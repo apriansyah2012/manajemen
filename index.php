@@ -114,6 +114,7 @@ include_once('layout/sidebar.php');
 							
                         </div>
                     </div>
+					
 					<div class="card">
                         <div class="body bg-green">
                             
@@ -135,6 +136,7 @@ include_once('layout/sidebar.php');
 							
                         </div>
                     </div>
+					
 					<div class="card">
                         <div class="body bg-teal">
                             
@@ -269,80 +271,7 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT JALAN ASURANSI</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ralan' AND kd_pj IN ('-',
-'A5',
-'104',
-'A05',
-'A06',
-'A07',
-'A08',
-'A09',
-'A10',
-'A11',
-'A12',
-'A13',
-'A14',
-'A15',
-'A16',
-'A17',
-'A18',
-'A19',
-'A20',
-'C02',
-'A69',
-'A21',
-'A22',
-'A23',
-'A25',
-'A72',
-'A26',
-'A27',
-'A28',
-'A29',
-'A30',
-'A31',
-'A32',
-'A33',
-'A34',
-'A35',
-'A36',
-'A37',
-'INH',
-'A73',
-'101',
-'A38',
-'A39',
-'A40',
-'A41',
-'A42',
-'A43',
-'A71',
-'A44',
-'C01',
-'A45',
-'A46',
-'A47',
-'A48',
-'A49',
-'A50',
-'A51',
-'A53',
-'A54',
-'A56',
-'100',
-'A70',
-'A59',
-'A60',
-'A61',
-'A62',
-'A63',
-'A01',
-'A04',
-'MAN',
-'A64',
-'A03',
-'A02',
-'A65')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ralan' AND b.kategori IN ('ASURANSI')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -353,112 +282,7 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT JALAN PT </div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ralan' AND kd_pj IN ('B01',
-'B02',
-'B71',
-'B03',
-'B04',
-'B05',
-'B06',
-'103',
-'B07',
-'B08',
-'B09',
-'B10',
-'B11',
-'B12',
-'B13',
-'B14',
-'B17',
-'B18',
-'B19',
-'B20',
-'B21',
-'B22',
-'DEA',
-'B23',
-'B24',
-'B25',
-'B26',
-'B27',
-'B28',
-'B29',
-'B30',
-'B31',
-'B32',
-'B33',
-'B34',
-'005',
-'B42',
-'C04',
-'A85',
-'C03',
-'B35',
-'B36',
-'B38',
-'B39',
-'B40',
-'B41',
-'B43',
-'INT',
-'001',
-'B44',
-'B45',
-'B46',
-'B47',
-'PTK',
-'A58',
-'B48',
-'B49',
-'B50',
-'B51',
-'B52',
-'105',
-'B53',
-'MDI',
-'B56',
-'B57',
-'B58',
-'B60',
-'B61',
-'B62',
-'B63',
-'B64',
-'B65',
-'007',
-'102',
-'B66',
-'B67',
-'B68',
-'B69',
-'B97',
-'B72',
-'B73',
-'B74',
-'B77',
-'B78',
-'B79',
-'B80',
-'B81',
-'B82',
-'B83',
-'B84',
-'B85',
-'B86',
-'B87',
-'B88',
-'A90',
-'B89',
-'B90',
-'B91',
-'B92',
-'B93',
-'B94',
-'B95',
-'B96',
-'A66',
-'RSD',
-'B99')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ralan' AND b.kategori IN ('PERUSAHAAN')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -518,83 +342,22 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT INAP ASURANSI</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ranap' AND  kd_pj IN ('-',
-'A5',
-'104',
-'A05',
-'A06',
-'A07',
-'A08',
-'A09',
-'A10',
-'A11',
-'A12',
-'A13',
-'A14',
-'A15',
-'A16',
-'A17',
-'A18',
-'A19',
-'A20',
-'C02',
-'A69',
-'A21',
-'A22',
-'A23',
-'A25',
-'A72',
-'A26',
-'A27',
-'A28',
-'A29',
-'A30',
-'A31',
-'A32',
-'A33',
-'A34',
-'A35',
-'A36',
-'A37',
-'INH',
-'A73',
-'101',
-'A38',
-'A39',
-'A40',
-'A41',
-'A42',
-'A43',
-'A71',
-'A44',
-'C01',
-'A45',
-'A46',
-'A47',
-'A48',
-'A49',
-'A50',
-'A51',
-'A53',
-'A54',
-'A56',
-'100',
-'A70',
-'A59',
-'A60',
-'A61',
-'A62',
-'A63',
-'A01',
-'A04',
-'MAN',
-'A64',
-'A03',
-'A02',
-'A65')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ranap' AND b.kategori IN ('ASURANSI')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-pink hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">local_hotel</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">RAWAT INAP PERUSAHAAN</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ranap' AND b.kategori IN ('PERUSAHAAN')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+
 				
                 
             </div>
@@ -761,7 +524,50 @@ include_once('layout/sidebar.php');
                             </table>
                             
                         </div>
-					
+						<div class="header">
+                            
+							<h5>
+                                RUANGAN MELATI
+								
+                            </h5>
+						</div>
+						<div class="body">
+                            <div id="buttons" class="align-center m-l-10 m-b-15 export-hidden"></div>
+                            <table id="datatable" class="table table-bordered table-striped table-hover display nowrap js-exportable" width="100%">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>NO</th>
+										<th>KODE KAMAR</th>
+                                        <th>NAMA KAMAR</th>
+                                        <th>STATUS</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                $sql = "SELECT a.kd_kamar, a.kd_bangsal, b.nm_bangsal, a.status FROM kamar a inner join bangsal b on a.kd_bangsal=b.kd_bangsal WHERE a.statusdata='1' and b.nm_bangsal Like 'MELATI 0%' ";
+                                
+                                $query = query($sql);
+                                $no = 1;
+                                while($row = fetch_array($query)) {
+                                ?>
+                                    <tr>
+                                        
+                                        <td><?php echo $no; ?></td>
+                                        <td><?php echo $row['0']; ?></td>
+                                        <td><?php echo $row['2']; ?></td>
+                                        <td><?php echo $row['3']; ?></td>
+                                        
+                                    </tr>
+                                <?php
+                                $no++;
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                            
+                        </div>
 					
                         <div class="header">
                             

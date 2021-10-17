@@ -46,13 +46,12 @@ include_once('../layout/sidebar.php');
                                         <th>Asuransi</th>
                                         <th>BPJS</th>
                                         <th>KAR-SEH</th>
-										<th>KemKes</th>
                                         <th>Gratis</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "select a.kd_poli, b.nm_poli,a.kd_dokter,c.nm_dokter, sum(a.status_poli ='Lama') as lama, sum(a.status_poli ='Baru') as baru, sum(a.kd_pj='A00') as umum, sum(a.kd_pj IN ('B01',
+                                $sql = "select a.kd_poli, b.nm_poli,a.kd_dokter,c.nm_dokter, sum(a.status_poli ='Lama') as lama, sum(a.status_poli ='Baru') as baru, sum(a.kd_pj='A00') as umum,  sum(a.kd_pj IN ('B01',
 'B02',
 'B71',
 'B03',
@@ -157,15 +156,8 @@ include_once('../layout/sidebar.php');
 'B96',
 'A66',
 'RSD',
-'B99',
-'WMI',
-'B98',
-'CHG',
-'HLS',
-'C05',
-'B37'
-)) as pj, sum(a.kd_pj IN ('-',
-'A5',
+'B99'
+)) as pj, sum(a.kd_pj IN ('A5',
 '104',
 'A05',
 'A06',
@@ -237,11 +229,8 @@ include_once('../layout/sidebar.php');
 'A64',
 'A03',
 'A02',
-'A24',
-'A65',
-'B15'
-
-)) as asuransi,sum(a.kd_pj ='A52') as bpjs,sum(a.kd_pj ='A55') as karseh,sum(a.kd_pj ='KMK') as kemkes,sum(a.status_lanjut ='Ralan') as rj,sum(a.status_lanjut ='Ranap') as ri, a.no_rkm_medis, sum(d.jk ='L') as Laki,sum(d.jk ='P') as Perempuan, sum(a.stts='Dirujuk') as rujuk, sum(a.stts='Meninggal') as doa from reg_periksa a join poliklinik b join dokter c join pasien d where a.kd_poli=b.kd_poli and a.kd_dokter=c.kd_dokter and a.kd_poli ='IGDK' and a.no_rkm_medis =d.no_rkm_medis";
+'A65'
+)) as asuransi,sum(a.kd_pj ='A52') as bpjs,sum(a.kd_pj ='A55') as karseh,sum(a.status_lanjut ='Ralan') as rj,sum(a.status_lanjut ='Ranap') as ri, a.no_rkm_medis, sum(d.jk ='L') as Laki,sum(d.jk ='P') as Perempuan, sum(a.stts='Dirujuk') as rujuk, sum(a.stts='Meninggal') as doa from reg_periksa a join poliklinik b join dokter c join pasien d where a.kd_poli=b.kd_poli and a.kd_dokter=c.kd_dokter and a.kd_poli ='IGDK' and a.no_rkm_medis =d.no_rkm_medis";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
                                   $sql .= " AND a.tgl_registrasi BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";
                                 } else {
@@ -272,7 +261,6 @@ include_once('../layout/sidebar.php');
                                         <td><?php echo $row['asuransi']; ?></td>
                                         <td><?php echo $row['bpjs']; ?></td>
                                         <td><?php echo $row['karseh']; ?></td>
-										<td><?php echo $row['kemkes']; ?></td>
                                         <td><?php echo '0' ?></td>
                                     </tr>
                                 <?php

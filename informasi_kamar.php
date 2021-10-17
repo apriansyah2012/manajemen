@@ -21,7 +21,7 @@ include_once('layout/header.php');
                         <div class="header">
                             <h2>
                                 INFORMASI KAMAR INAP HARI INI
-                                <small><?php echo $dayList[$day].", ".date(d)." ".$bulanList[$bulan]." ".date(Y).date('H:i:s'); ?></small>
+                                <small><?php echo $dayList[$day].", ".date(d)." ".$bulanList[$bulan]." ".date(Y); ?></small>
                             </h2>
                         </div>
                         <div class="body table-responsive">

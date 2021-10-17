@@ -34,19 +34,16 @@ include_once('layout/sidebar.php');
                                         <th>Nama Pasien</th>
                                         <th>No. RM</th>
                                         <th>No. Reg</th>
-                                        <th>Tgl. Booking</th>
-                                        <th>Jam Booking</th>
-										<th>Tgl. Periksa</th>
+                                        <th>Tgl. Reg</th>
+                                        <th>Jam Reg</th>
                                         <th>Alamat</th>
                                         <th>Jenis Bayar</th>
                                         <th>Poliklinik</th>
-										<th>Status</th>
-										
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "SELECT a.nm_pasien, b.no_rkm_medis, a.alamat, c.png_jawab, d.nm_poli, b.no_reg, b.tanggal_booking, b.jam_booking, b.tanggal_periksa,b.status FROM pasien a, booking_registrasi b, penjab c, poliklinik d WHERE a.no_rkm_medis = b.no_rkm_medis AND b.kd_pj = c.kd_pj AND b.kd_poli = d.kd_poli";
+                                $sql = "SELECT a.nm_pasien, b.no_rkm_medis, a.alamat, c.png_jawab, d.nm_poli, b.no_reg, b.tanggal_booking, b.jam_booking FROM pasien a, booking_registrasi b, penjab c, poliklinik d WHERE a.no_rkm_medis = b.no_rkm_medis AND b.kd_pj = c.kd_pj AND b.kd_poli = d.kd_poli";
                                 if($role == 'Medis' || $role == 'Paramedis') {
                                   $sql .= " AND b.kd_poli = '$jenis_poli'";
                                 }
@@ -64,12 +61,9 @@ include_once('layout/sidebar.php');
                                         <td><?php echo $row['5']; ?></td>
                                         <td><?php echo $row['6']; ?></td>
                                         <td><?php echo $row['7']; ?></td>
-										<td><?php echo $row['8']; ?></td>
                                         <td><?php echo $row['2']; ?></td>
                                         <td><?php echo $row['3']; ?></td>
                                         <td><?php echo $row['4']; ?></td>
-										<td><?php echo $row['9']; ?></td>
-										
                                     </tr>
                                 <?php
                                 }

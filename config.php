@@ -31,14 +31,14 @@ if (strlen($_SERVER['REQUEST_URI']) > 255 || strpos($_SERVER['REQUEST_URI'], "co
 define('VERSION', '0.1 Beta');
 define('ABSPATH', dirname(__FILE__) . '/');
 define('URL', 'http://localhost/direktur');
-define('URLSIMRS', 'http://localhost/webapps');
+define('URLSIMRS', 'http://localhost/webappsn');
 define('DIR', '');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'sik');
-define('KODERS', '');
-define('KODEPROP','');
+define('KODERS', '3215056');
+define('KODEPROP','32');
 
 define('BpjsApiUrl', 'https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest/');
 define('ConsID', '');

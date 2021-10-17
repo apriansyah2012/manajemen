@@ -33,8 +33,10 @@ include_once('../layout/sidebar.php');
                                 	<i class="material-icons">arrow_drop_down_circle</i>
                                 </a>
                                     <ul class="dropdown-menu pull-right">
-                                       
-                                        <li><a href="rl-1-2.php?tahun=2020">2020</a></li>
+                                        <li><a href="rl-1-2.php?tahun=2016">2016</a></li>
+                                        <li><a href="rl-1-2.php?tahun=2017">2017</a></li>
+                                        <li><a href="rl-1-2.php?tahun=2018">2018</a></li>
+                                        <li><a href="rl-1-2.php?tahun=2019">2019</a></li>
                                     </ul>
                           	</li>
                         </ul>

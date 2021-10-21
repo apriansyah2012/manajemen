@@ -38,13 +38,16 @@
                             <span>Home</span>
                         </a>
                     </li>
+					 <?php if($role == 'Admin' || $role == 'RekamMedik')  { ?>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        
+						<a href="javascript:void(0);" class="menu-toggle">
+						
                             <i class="material-icons">text_fields</i>
                             <span>Pasien</span>
                         </a>
                         <ul class="ml-menu">
-		                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik')  { ?>
+		                    <?php if($role == 'Admin' || $role == 'RekamMedik')  { ?>
                             <li>
                                 <a href="<?php echo URL; ?>/booking.php">Booking Pendaftaran</a>
                             </li>
@@ -57,7 +60,7 @@
                                 <a href="<?php echo URL; ?>/pasien-ralan.php">Pasien Rawat Jalan</a>
                             </li>
                           	<?php } ?>
-                          	<?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'Medis' || $role == 'RekamMedik' || $role == 'Paramedis_Ranap')  { ?>
+                          	<?php if($role == 'Admin' || $role == 'Medis' || $role == 'RekamMedik' || $role == 'Paramedis_Ranap')  { ?>
                             <li>
                                 <a href="<?php echo URL; ?>/pasien-ranap.php">Pasien <?php if($role == 'Paramedis_Ranap') { echo $dataGetBangsal['nm_bangsal']; } else { echo 'Rawat Inap'; } ?></a>
                             </li>
@@ -73,7 +76,8 @@
                             </li>
                         </ul>
                     </li>
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'Kasir')  { ?>
+					<?php } ?>
+                    <?php if($role == 'Admin' || $role == 'Kasir')  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">attach_money</i>
@@ -89,7 +93,7 @@
                         </ul>
                     </li>
                     <?php } ?>
-					<?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik')  { ?>
+					<?php if($role == 'Admin' || $role == 'RekamMedik')  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">hotel</i>
@@ -102,7 +106,7 @@
                         </ul>
                     </li>
                     <?php } ?>
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'Apotek')  { ?>
+                    <?php if($role == 'Admin' || $role == 'Apotek')  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
@@ -137,14 +141,14 @@
                         </ul>
                     </li>
                     <?php } ?>
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik' || $_SESSION['jenis_poli'] == 'U0019')  { ?>
+                    <?php if($role == 'Admin' || $role == 'RekamMedik' || $_SESSION['jenis_poli'] == 'U0019')  { ?>
                       <li>
                           <a href="javascript:void(0);" class="menu-toggle">
                               <i class="material-icons">import_export</i>
                               <span>Bridging</span>
                           </a>
                           <ul class="ml-menu">
-                              <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik') { ?>
+                              <?php if($role == 'Admin' || $role == 'RekamMedik') { ?>
                               <li>
                                   <a href="<?php echo URL; ?>/bridging/br-igd.php">IGD</a>
                               </li>
@@ -154,7 +158,7 @@
                                   <a href="<?php echo URL; ?>/bridging/br-ralan.php">Rawat Jalan</a>
                               </li>
                               <?php } ?>
-                              <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik') { ?>
+                              <?php if($role == 'Admin'  || $role == 'RekamMedik') { ?>
                               <li>
                                   <a href="<?php echo URL; ?>/bridging/br-ranap.php">Rawat Inap</a>
                               </li>
@@ -169,7 +173,7 @@
                       </li>
                       <?php } ?>
                     <li class="header">MANAJEMEN</li>
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'Medis' || $role == 'Apotek')  { ?>
+                    <?php if($role == 'Admin'  )  { ?>
                     <li>
                         <a href="<?php echo URL; ?>/surat.php">
                             <i class="material-icons">storage</i>
@@ -234,6 +238,9 @@
                             </li>
                             <li>
                                 <a href="<?php echo URL; ?>/icd-9.php">ICD-9</a>
+                            </li>
+							 <li>
+                                <a href="<?php echo URL; ?>/kesling.php">Surveilance</a>
                             </li>
 	                        </ul>
                     </li>
@@ -374,7 +381,7 @@
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">update</i>
-                            <span>Laporan Monev</span>
+                            <span>Laporan Monev Manajemen</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
@@ -392,6 +399,12 @@
                                         <a href="<?php echo URL; ?>/laporan/regigd.php">Kunjungan IGD</a>
                                     </li>
 									<li>
+                                        <a href="<?php echo URL; ?>/laporan/regfisio.php">Kunjungan FISIOTHERAPY</a>
+                                    </li>
+									<li>
+                                        <a href="<?php echo URL; ?>/laporan/regrehab.php">Kunjungan REHABILITASI MEDIK</a>
+                                    </li>
+									<li>
                                         <a href="<?php echo URL; ?>/laporan/reghd.php">Kunjungan HEMODIALISA</a>
                                     </li>
 									<li>
@@ -403,48 +416,45 @@
                                     <li>
                                         <a href="<?php echo URL; ?>/laporan/gayatri.php">Kunjungan GAYATRI</a>
                                     </li>
-                                    <li>
-                                        <a href="<?php echo URL; ?>/laporan/rekRI.php">Kunjungan Rawat Inap </a>
+									<li>
+                                        <a href="<?php echo URL; ?>/data-periksa-lab1.php">Kunjungan Laboratorium</a>
+                                    </li>
+									<li>
+                                        <a href="<?php echo URL; ?>/data-periksa-ro.php">Kunjungan Radiologi</a>
+                                    </li>
+                                    
+									<li>
+                                        <a href="<?php echo URL; ?>/laporan/rekRI.php">Kunjungan Rawat Inap Pandemi </a>
+                                    </li>
+									<li>
+                                        <a href="<?php echo URL; ?>/laporan/rekRIc19.php">Kunjungan Rawat Inap </a>
+                                    </li>
+									<li>
+                                        <a href="<?php echo URL; ?>/laporan/util.php">Utilitas dan Surveilance</a>
                                     </li>
                                 </ul>
+								<a href="javascript:void(0);" class="menu-toggle">
+								<span>Rujukan FASKES TK I </span>
+								</a>
+								<ul class="ml-menu">
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/rujukanbpjs.php">Kunjungan Rujukan PPK TK I BPJS </a>
+                                </li>
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/rujukantunai.php">Kunjungan Rujukan PPK TK I TUNAI </a>
+                                </li>
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/dataprb.php">Data PRB </a>
+                                </li>
                             </li>
-                            
-                            
-                            
-                          </ul>
-						  
-                      </li>
-                      <?php } ?>
-					  <?php if($role == 'Admin' )  { ?>
-                    <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">update</i>
-                            <span>Laporan Keuangan</span>
-                        </a>
-                        <ul class="ml-menu">
-                           <li>
-                               <a href="<?php echo URL; ?>/laporan/cashflow.php">Cash Flow</a>
-                           </li>
-						   <li>
-                               <a href="<?php echo URL; ?>/laporan/rekRJ.php">Laba/Rugi</a>
-                           </li>
-						   <li>
-                               <a href="<?php echo URL; ?>/laporan/rekRJ.php">Perubahan Modal</a>
-                           </li>
-						   <li>
-                               <a href="<?php echo URL; ?>/laporan/rekRJ.php">Buku Besar</a>
-                           </li>
-						   <li>
-                               <a href="<?php echo URL; ?>/laporan/rekRJ.php">Neraca</a>
-                           </li>
-                            
+							
                             
                             
                           </ul>
 						  
                       </li>
                       <?php } ?>
-                      <?php if($role == 'Admin' || $role == 'Manajemen')  { ?>
+                      <?php if($role == 'Admin' )  { ?>
                     	<li>
                           <a href="javascript:void(0);" class="menu-toggle">
                               <i class="material-icons">mail</i>

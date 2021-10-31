@@ -8,7 +8,7 @@
 * Licence under GPL
 ***/
 
-$title = 'DATA KUNJUNGAN PASIEN HEMODIALISA';
+$title = 'DATA KUNJUNGAN RUJUKAN PPK TK I Ke RAWAT INAP (PASIEN BPJS)';
 include_once('../config.php');
 include_once('../layout/header.php');
 include_once('../layout/sidebar.php');
@@ -21,7 +21,7 @@ include_once('../layout/sidebar.php');
                     <div class="card">
                         <div class="header">
                             <h2>
-                                DATA KUNJUNGAN PASIEN  HEMODIALISA
+                                DATA KUNJUNGAN RUJUKAN PPK TK I Ke RAWAT INAP (PASIEN BPJS)
                                 <small><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
                             </h2>
                         </div>
@@ -31,53 +31,56 @@ include_once('../layout/sidebar.php');
                                 <thead>
                                     <tr>
                                         
-                                        <th>Klinik</th>
-                                        <th>Dokter</th>
-                                        <th>Baru</th>
-                                        <th>Lama</th>
-                                        <th>L</th>
-                                        <th>P</th>
-                                        <th>RJ</th>
-                                        <th>RI</th>
-                                        <th>Rujuk</th>
-                                        <th>Umum</th>
-                                        <th>PT</th>
-                                        <th>Asuransi</th>
-                                        <th>BPJS</th>
-                                        <th>KAR-SEH</th>
-                                        <th>Gratis</th>
+                                        <th>NO RAWAT</th>
+                                        <th>KLINIK/PKM</th>
+                                        <th>NO. RM</th>
+                                        <th>NAMA PASIEN</th>                                        
+                                        <th>NAMA DOKTER</th>
+                                        <th>NAMA POLI</th>
+                                        <th>NAMA RUANGAN</th>
+                                        <th>NO SEP</th>
+                                        <th>NO RUJUKAN</th>
+                                        <th>CARA BAYAR</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "select a.kd_poli, b.nm_poli,a.kd_dokter,c.nm_dokter, sum(a.status_poli ='Lama') as lama, sum(a.status_poli ='Baru') as baru, sum(e.kategori='TUNAI') as umum, sum(e.kategori IN ('PERUSAHAAN')) as pj, sum(e.kategori IN ('ASURANSI')) as asuransi,sum(a.kd_pj ='A52') as bpjs,sum(a.kd_pj ='A55') as karseh,sum(a.status_lanjut ='Ralan') as rj,sum(a.status_lanjut ='Ranap') as ri, a.no_rkm_medis, sum(d.jk ='L') as Laki,sum(d.jk ='P') as Perempuan, sum(a.stts='Dirujuk') as rujuk from reg_periksa a join poliklinik b join dokter c join pasien d join penjab e where a.kd_poli=b.kd_poli and a.kd_dokter=c.kd_dokter and a.kd_poli ='U0016' and a.no_rkm_medis =d.no_rkm_medis and a.kd_pj=e.kd_pj";
+                                $sql = "select a.no_rawat,a.perujuk,c.no_rkm_medis,d.nm_pasien, c.kd_dokter, h.nm_dokter,  e.nm_poli,  g.nm_bangsal, i.no_sep, i.no_rujukan, j.png_jawab from rujuk_masuk a  join kamar_inap b  join reg_periksa c  join pasien d 
+									join poliklinik e 
+									join kamar f
+									join bangsal g
+									join dokter h
+									JOIN bridging_sep i
+									join penjab j
+									where a.no_rawat =b.no_rawat  AND b.no_rawat=c.no_rawat and c.no_rkm_medis =d.no_rkm_medis and c.kd_poli=e.kd_poli and b.kd_kamar=f.kd_kamar
+									and c.kd_dokter = h.kd_dokter
+									and f.kd_bangsal=g.kd_bangsal
+									and a.no_rawat=i.no_rawat
+									and c.kd_pj=j.kd_pj AND c.kd_pj ='A52'
+									  ";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
-                                  $sql .= " AND a.tgl_registrasi BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";
+                                  $sql .= " AND b.tgl_masuk BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";
                                 } else {
-                                    $sql .= " AND a.tgl_registrasi = '$date'";
+                                    $sql .= " AND b.tgl_masuk = '$date'";
                                 }
-                                $sql .= " GROUP BY c.nm_dokter";
+                                $sql .= " GROUP BY a.no_rawat";
                                 $query = query($sql);
                                 $no = 1;
                                 while($row = fetch_array($query)) {
                                 ?>
                                     <tr>
                                         
-                                        <td><?php echo $row['1']; ?></td>
-                                        <td><?php echo $row['3']; ?></td>
-                                        <td><?php echo $row['baru']; ?></td>
-                                        <td><?php echo $row['lama']; ?></td>
-                                        <td><?php echo $row['Laki']; ?></td>
-                                        <td><?php echo $row['Perempuan']; ?></td>
-                                        <td><?php echo $row['rj']; ?></td>
-                                        <td><?php echo $row['ri']; ?></td>
-                                        <td><?php echo $row['rujuk']; ?></td>
-                                        <td><?php echo $row['umum']; ?></td>
-                                        <td><?php echo $row['pj']; ?></td>
-                                        <td><?php echo $row['asuransi']; ?></td>
-                                        <td><?php echo $row['bpjs']; ?></td>
-                                        <td><?php echo $row['karseh']; ?></td>
-                                        <td><?php echo '0'; ?></td>
+                                        <td><?php echo $row['no_rawat']; ?></td>
+                                        <td><?php echo $row['perujuk']; ?></td>
+                                        <td><?php echo $row['no_rkm_medis']; ?></td>
+                                        <td><?php echo $row['nm_pasien']; ?></td>                                        
+                                        <td><?php echo $row['nm_dokter']; ?></td>
+                                        <td><?php echo $row['nm_poli']; ?></td>
+                                        <td><?php echo $row['nm_bangsal']; ?></td>
+                                        <td><?php echo $row['no_sep']; ?></td>
+                                        <td><?php echo $row['no_rujukan']; ?></td>
+										 <td><?php echo $row['png_jawab']; ?></td>
                                     </tr>
                                 <?php
                                 $no++;

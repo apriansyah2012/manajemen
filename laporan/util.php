@@ -1,12 +1,5 @@
 <?php
-/***
-* SIMRS Khanza Lite from version 0.1 Beta
-* About : Porting of SIMRS Khanza by Windiarto a.k.a Mas Elkhanza as web and mobile app.
-* Last modified: 02 Pebruari 2018
-* Author : drg. Faisol Basoro
-* Email : drg.faisol@basoro.org
-* Licence under GPL
-***/
+
 
 $title = 'Laporan';
 include_once('../config.php');
@@ -34,7 +27,7 @@ include_once('../layout/sidebar.php');
                                 </a>
                                     <ul class="dropdown-menu pull-right">
                                        
-                                        <li><a href="rl-1-2.php?tahun=2020">2020</a></li>
+                                        <li><a href="util.php?bulan=02">Feb</a></li>
                                     </ul>
                           	</li>
                         </ul>
@@ -44,10 +37,8 @@ include_once('../layout/sidebar.php');
                           <table id="datatable" class="table table-bordered table-striped table-hover display nowrap js-exportable" width="100%">
                               <thead>
                                   <tr>
-                                      <th>Kode RS</th>
-                                      <th>Kode Prop</th>
-                                      <th>Kab / Kota</th>
-                                      <th>Tahun</th>
+                                      
+                                      <th>Bulan</th>
                                       <th>BOR</th>
                                       <th>LOS</th>
                                       <th>BTO</th>
@@ -59,13 +50,18 @@ include_once('../layout/sidebar.php');
                               </thead>
                               <tbody>
                                   <tr>
-                                      <td><?php echo KODERS; ?></td>
-                                      <td><?php echo KODEPROP; ?></td>
-                                      <td><?php echo $dataSettings['kabupaten']; ?></td>
-                                      <td><?php echo $tahun; ?></td>
+                                      
+                                      <td><?php echo $bulan; 
+									  $kalender = CAL_GREGORIAN;
+												
+												
+												$hari1 = cal_days_in_month($kalender, $bulan, $tahun);
+									  
+									  
+									  ?></td>
                                       <td><?php $kamar = "SELECT COUNT(kd_kamar) as total FROM kamar WHERE statusdata = '1'"; $result1 = fetch_array(query($kamar));
-                                        		$hari = "SELECT SUM(lama) as lama FROM kamar_inap WHERE tgl_masuk LIKE '%{$tahun}%'"; $result2 = fetch_array(query($hari)); 
-                                        		$bor = $result2['lama']/($result1['total']*365); echo number_format($bor*100,2)."%";?></td>
+                                        		$hari = "SELECT SUM(lama) as lama FROM kamar_inap WHERE tgl_keluar LIKE '%{$hari1}%'"; $result2 = fetch_array(query($hari)); 
+                                        		$bor = $result2['lama']/($result1['total']*$hari1); echo number_format($bor*100,2)."%";?></td>
                                       <td><?php $jml = "SELECT COUNT(no_rawat) as jml FROM kamar_inap WHERE tgl_masuk LIKE '%{$tahun}%'"; $jmlpsn = fetch_array(query($jml));
                                         		$alos = $result2['lama']/$jmlpsn['jml']; echo number_format($alos,2)." Hari";?></td>
                                       <td><?php $bto = $jmlpsn['jml']/$result1['total']; echo number_format($bto,2)." Kali";?></td>

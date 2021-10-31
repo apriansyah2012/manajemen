@@ -30,19 +30,19 @@ if (strlen($_SERVER['REQUEST_URI']) > 255 || strpos($_SERVER['REQUEST_URI'], "co
 
 define('VERSION', '0.1 Beta');
 define('ABSPATH', dirname(__FILE__) . '/');
-define('URL', 'http://localhost/direktur');
-define('URLSIMRS', 'http://localhost/webappsn');
+define('URL', 'http://rskaryahusada.net/direktur');
+define('URLSIMRS', 'http://rskaryahusada.net:2001/webappsn');
 define('DIR', '');
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'sik');
+define('DB_HOST', '192.168.1.15');
+define('DB_USER', 'rskh_2018');
+define('DB_PASS', 'terserahq1w2e3r');
+define('DB_NAME', 'rskh_simrs2020');
 define('KODERS', '3215056');
 define('KODEPROP','32');
 
 define('BpjsApiUrl', 'https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest/');
-define('ConsID', '');
-define('SecretKey', '');
+define('ConsID', '10673');
+define('SecretKey', '9lWE72A2A7');
 
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 function escape($string) {

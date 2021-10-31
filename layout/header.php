@@ -58,6 +58,7 @@ include_once(ABSPATH.'/init.php');
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo URL; ?>/css/themes/all-themes.css" rel="stylesheet" />
+	<script data-ad-client="ca-pub-3739524596314760" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body class="theme-green">
@@ -99,7 +100,8 @@ include_once(ABSPATH.'/init.php');
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="<?php echo URL; ?>/index.php"><?php echo $dataSettings['nama_instansi']; ?></a>
+				<img src="./logorskh.png" width="40" height="40" />
+                <a  class="navbar-brand"  href="<?php echo URL; ?>/index.php" ><?php echo $dataSettings['nama_instansi']; ?></a>
             </div>
         </div>
     </nav>

@@ -64,7 +64,7 @@ include_once('layout/sidebar.php');
                                 <td><?php echo SUBSTR($a['nm_poli'], 5, 16); ?></td>
                                 <td><?php echo $a['png_jawab']; ?></td>
                                 <td><a class="btn btn-primary" href="<?php echo $_SERVER['PHP_SELF']; ?>?action=sep&no_rawat=<?php echo $a['no_rawat'];?>">Cek Bridging PCare</a></td>
-                                <td><a class="btn btn-primary" href="https://rskaryahusada.net/direktur/objek/cetaksep.php?action=cetak&no_rawat=<?php echo $a['no_rawat']; ?>" target="_BLANK">Cetak</a></td>
+                                <td><a class="btn btn-primary" href="https://192.168.1.1:8090/direktur/objek/cetaksep.php?action=cetak&no_rawat=<?php echo $a['no_rawat']; ?>" target="_BLANK">Cetak</a></td>
                               </tr>
                                 <?php } ?>
                             </tbody>

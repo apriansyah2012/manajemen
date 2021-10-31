@@ -1,14 +1,7 @@
 <?php
-/***
-* SIMRS Khanza Lite from version 0.1 Beta
-* About : Porting of SIMRS Khanza by Windiarto a.k.a Mas Elkhanza as web and mobile app.
-* Last modified: 02 Pebruari 2018
-* Author : drg. Faisol Basoro
-* Email : drg.faisol@basoro.org
-* Licence under GPL
-***/
 
-$title = 'DATA KUNJUNGAN RUJUKAN PPK TK I PRB (PASIEN BPJS)';
+
+$title = 'DATA PRB KUNJUNGAN RUJUKAN PPK TK I  (PASIEN BPJS)';
 include_once('../config.php');
 include_once('../layout/header.php');
 include_once('../layout/sidebar.php');
@@ -21,7 +14,7 @@ include_once('../layout/sidebar.php');
                     <div class="card">
                         <div class="header">
                             <h2>
-                                DATA KUNJUNGAN RUJUKAN PPK TK I PRB (PASIEN BPJS)
+                                DATA PRB KUNJUNGAN RUJUKAN PPK TK I  (PASIEN BPJS)
                                 <small><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
                             </h2>
                         </div>
@@ -31,13 +24,17 @@ include_once('../layout/sidebar.php');
                                 <thead>
                                     <tr>
                                         
-                                        <th>NO RAWAT</th>
+                                        <th>NO.</th>
+										<th>NO RAWAT</th>
                                         <th>No SEP</th>
+					<th>NO. KARTU</th>
+
                                         <th>NO. RM</th>
                                         <th>NAMA PASIEN</th>  
-										<th>Dokter</th>
-										<th>Nama PPK TK I</th>
-                                        <th>Tgl SEP</th>
+										<th>POLI</th>
+										<th>DOKTER</th>
+										<th>ASAL PPK TK I</th>
+                                        <th>TGL SEP</th>
                                         <th>PRB</th>
                                        
                                         
@@ -45,7 +42,7 @@ include_once('../layout/sidebar.php');
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "select a.no_rawat,a.no_sep, b.no_rkm_medis,c.nm_pasien, d.prb, a.kdpolitujuan,a.nmpolitujuan,a.nmdpdjp, a.tglsep,a.nmppkrujukan  from bridging_sep a join reg_periksa b  join pasien c on b.no_rkm_medis = c.no_rkm_medis join bpjs_prb d   where a.no_rawat=b.no_rawat and a.no_sep = d.no_sep
+                                $sql = "select a.no_rawat,a.no_sep, b.no_rkm_medis,c.nm_pasien, d.prb, a.kdpolitujuan,a.nmpolitujuan,a.nmdpdjp, a.tglsep,a.nmppkrujukan,a.no_kartu  from bridging_sep a join reg_periksa b  join pasien c on b.no_rkm_medis = c.no_rkm_medis join bpjs_prb d   where a.no_rawat=b.no_rawat and a.no_sep = d.no_sep
 									  ";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
                                   $sql .= " AND a.tglsep BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";
@@ -58,11 +55,13 @@ include_once('../layout/sidebar.php');
                                 while($row = fetch_array($query)) {
                                 ?>
                                     <tr>
-                                        
+                                        <td><?php echo $no; ?></td>
                                         <td><?php echo $row['no_rawat']; ?></td>
                                         <td><?php echo $row['no_sep']; ?></td>
+					<td><?php echo $row['no_kartu']; ?></td>
                                         <td><?php echo $row['no_rkm_medis']; ?></td>
-                                        <td><?php echo $row['nm_pasien']; ?></td> 
+                                        <td><?php echo $row['nm_pasien']; ?></td>
+										<td><?php echo $row['nmpolitujuan']; ?></td>										
 										<td><?php echo $row['nmdpdjp']; ?></td> 
 										<td><?php echo $row['nmppkrujukan']; ?></td> 
 										<td><?php echo $row['tglsep']; ?></td>

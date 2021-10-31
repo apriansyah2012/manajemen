@@ -24,6 +24,7 @@ include_once('layout/sidebar.php');
                             </h2>
                         </div>
                         <div class="body">
+						<div id="buttons" class="align-center m-l-10 m-b-15 export-hidden"></div>
 						  <?php 
 							  $action = isset($_GET['action'])?$_GET['action']:null;
 							  if(!$action){

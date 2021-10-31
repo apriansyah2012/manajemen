@@ -7,30 +7,74 @@ include_once('layout/sidebar.php');
 
 ?>
 <?php
-            if(isset($_GET['tahun'])) { $tahun = $_GET['tahun']; } else { $tahun = date("Y"); };
-              if(isset($_GET['bulan'])) { $bulan = $_GET['bulan']; } else { $bulan = date("m"); };
-        ?>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <p class="col-orange font-24 font-uppercase"><?php echo $title; ?></p>
-            </div>
+    if(isset($_GET['tahun'])) { $tahun = $_GET['tahun']; } else { $tahun = date("Y"); };
+    if(isset($_GET['bulan'])) { $bulan = $_GET['bulan']; } else { $bulan = date("m"); };
+?>
+<section class="content">
+	<div class="container-fluid">
+		<div class="row clearfix">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                   <div class="header">
+					<div class="block-header">
+						<p class="col-orange font-24 font-uppercase"><?php echo $title; ?></p>
+					</div>
             <!-- Widgets -->
-            <div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-pink hover-expand-effect">
+						<div class="row clearfix">
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+								<div class="info-box bg-pink hover-expand-effect">
+									<div class="icon">
+										<i class="material-icons">enhanced_encryption</i>
+									</div>
+									<div class="content">
+										<div class="text">TOTAL PASIEN</div>
+										<div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM pasien"));?>" data-speed="5000" data-fresh-interval="20"></div>
+									</div>
+								</div>
+							</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="info-box bg-blue  hover-expand-effect">
+								<div class="icon">
+									<i class="material-icons">airline_seat_recline_normal</i>
+								</div>
+								<div class="content">
+									<div class="text">RAWAT JALAN</div>
+									<div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' "));?>" data-speed="2000" data-fresh-interval="20"></div>
+								</div>
+							</div>
+						</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-purple hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">enhanced_encryption</i>
+                            <i class="material-icons">local_hotel</i>
                         </div>
                         <div class="content">
-                            <div class="text">TOTAL PASIEN</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM pasien"));?>" data-speed="5000" data-fresh-interval="20"></div>
+                            <div class="text">RAWAT INAP</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT stts_pulang FROM kamar_inap WHERE stts_pulang = '-' "));?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
-                
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-Green hover-expand-effect">
+				
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-light-green hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">PASIEN BULAN INI</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rawat FROM reg_periksa WHERE tgl_registrasi LIKE '%$month%'"));?>" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+				 </div>
+				 </div>
+				  </div>
+				   </div>
+				   </div>
+				   
+     
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="info-box bg-cyan hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">airline_seat_recline_normal</i>
                         </div>
@@ -41,6 +85,7 @@ include_once('layout/sidebar.php');
                         </div>
                     </div>
                 </div>
+				
 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 <div class="info-box bg-cyan hover-expand-effect">
                         <div class="icon">
@@ -138,80 +183,7 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT JALAN ASURANSI</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ralan' AND kd_pj IN ('-',
-'A5',
-'104',
-'A05',
-'A06',
-'A07',
-'A08',
-'A09',
-'A10',
-'A11',
-'A12',
-'A13',
-'A14',
-'A15',
-'A16',
-'A17',
-'A18',
-'A19',
-'A20',
-'C02',
-'A69',
-'A21',
-'A22',
-'A23',
-'A25',
-'A72',
-'A26',
-'A27',
-'A28',
-'A29',
-'A30',
-'A31',
-'A32',
-'A33',
-'A34',
-'A35',
-'A36',
-'A37',
-'INH',
-'A73',
-'101',
-'A38',
-'A39',
-'A40',
-'A41',
-'A42',
-'A43',
-'A71',
-'A44',
-'C01',
-'A45',
-'A46',
-'A47',
-'A48',
-'A49',
-'A50',
-'A51',
-'A53',
-'A54',
-'A56',
-'100',
-'A70',
-'A59',
-'A60',
-'A61',
-'A62',
-'A63',
-'A01',
-'A04',
-'MAN',
-'A64',
-'A03',
-'A02',
-'A65')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ralan' AND b.kategori IN ('ASURANSI')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -222,119 +194,14 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT JALAN PT </div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ralan' AND kd_pj IN ('B01',
-'B02',
-'B71',
-'B03',
-'B04',
-'B05',
-'B06',
-'103',
-'B07',
-'B08',
-'B09',
-'B10',
-'B11',
-'B12',
-'B13',
-'B14',
-'B17',
-'B18',
-'B19',
-'B20',
-'B21',
-'B22',
-'DEA',
-'B23',
-'B24',
-'B25',
-'B26',
-'B27',
-'B28',
-'B29',
-'B30',
-'B31',
-'B32',
-'B33',
-'B34',
-'005',
-'B42',
-'C04',
-'A85',
-'C03',
-'B35',
-'B36',
-'B38',
-'B39',
-'B40',
-'B41',
-'B43',
-'INT',
-'001',
-'B44',
-'B45',
-'B46',
-'B47',
-'PTK',
-'A58',
-'B48',
-'B49',
-'B50',
-'B51',
-'B52',
-'105',
-'B53',
-'MDI',
-'B56',
-'B57',
-'B58',
-'B60',
-'B61',
-'B62',
-'B63',
-'B64',
-'B65',
-'007',
-'102',
-'B66',
-'B67',
-'B68',
-'B69',
-'B97',
-'B72',
-'B73',
-'B74',
-'B77',
-'B78',
-'B79',
-'B80',
-'B81',
-'B82',
-'B83',
-'B84',
-'B85',
-'B86',
-'B87',
-'B88',
-'A90',
-'B89',
-'B90',
-'B91',
-'B92',
-'B93',
-'B94',
-'B95',
-'B96',
-'A66',
-'RSD',
-'B99')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ralan' AND b.kategori IN ('PERUSAHAAN')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
                 
 				
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-Green hover-expand-effect">
+                    <div class="info-box bg-green hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">airline_seat_recline_normal</i>
                         </div>
@@ -387,121 +254,27 @@ include_once('layout/sidebar.php');
                         </div>
                         <div class="content">
                             <div class="text">RAWAT INAP ASURANSI</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' AND status_lanjut = 'Ranap' AND  kd_pj IN ('-',
-'A5',
-'104',
-'A05',
-'A06',
-'A07',
-'A08',
-'A09',
-'A10',
-'A11',
-'A12',
-'A13',
-'A14',
-'A15',
-'A16',
-'A17',
-'A18',
-'A19',
-'A20',
-'C02',
-'A69',
-'A21',
-'A22',
-'A23',
-'A25',
-'A72',
-'A26',
-'A27',
-'A28',
-'A29',
-'A30',
-'A31',
-'A32',
-'A33',
-'A34',
-'A35',
-'A36',
-'A37',
-'INH',
-'A73',
-'101',
-'A38',
-'A39',
-'A40',
-'A41',
-'A42',
-'A43',
-'A71',
-'A44',
-'C01',
-'A45',
-'A46',
-'A47',
-'A48',
-'A49',
-'A50',
-'A51',
-'A53',
-'A54',
-'A56',
-'100',
-'A70',
-'A59',
-'A60',
-'A61',
-'A62',
-'A63',
-'A01',
-'A04',
-'MAN',
-'A64',
-'A03',
-'A02',
-'A65')"));?>" data-speed="2000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ranap' AND b.kategori IN ('ASURANSI')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-red  hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">airline_seat_recline_normal</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">RAWAT JALAN</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rkm_medis FROM reg_periksa WHERE tgl_registrasi LIKE '%$date%' "));?>" data-speed="2000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-red hover-expand-effect">
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-pink hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">local_hotel</i>
                         </div>
                         <div class="content">
-                            <div class="text">RAWAT INAP</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT stts_pulang FROM kamar_inap WHERE stts_pulang = '-' "));?>" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="text">RAWAT INAP PERUSAHAAN</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT a.no_rkm_medis FROM reg_periksa a join penjab b WHERE a.kd_pj=b.kd_pj and a.tgl_registrasi LIKE '%$date%' AND a.status_lanjut = 'Ranap' AND b.kategori IN ('PERUSAHAAN')"));?>" data-speed="2000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
+
 				
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-green hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">people</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">PASIEN BULAN INI</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo num_rows(query("SELECT no_rawat FROM reg_periksa WHERE tgl_registrasi LIKE '%$month%'"));?>" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
                 
             </div>
             <!-- #END# Widgets -->
-
+			
             <!-- Bar chartjs -->
             <div class="card">
                 <div class="header">
@@ -522,7 +295,99 @@ include_once('layout/sidebar.php');
                     <canvas id="line_chart" height="150"></canvas>
                 </div>
             </div>
+			 <div class="card">
+                <div class="header">
+                    <h2>10 BESAR PENGGUNAAN BARANG FARMASI TERBANYAK </h2>
+                </div>
+                <div class="body">
+                    <canvas id="lines_chart" height="150"></canvas>
+                </div>
+            </div>
             <!-- #End# Bar chartjs -->
+			
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                BARBER JHONSON <?php echo "Periode Bulan ".$bulan; ?>
+                            </h2>
+                          <small><?php 
+						  if(isset($_GET['bulan'])) { $bulan = $_GET['bulan']; } else { $bulan = date('Y-m'); };  
+						  
+						  ?></small>
+                          <ul class="header-dropdown m-r--5">
+                        	<li class="dropdown">
+                            	<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                	<i class="material-icons">arrow_drop_down_circle</i>
+                                </a> 
+                                    <ul class="dropdown-menu pull-right">
+										
+                                        <li><a href="index.php?bulan=January">Januari</a></li>
+                                        <li><a href="index.php?bulan=Februari">Februari</a></li>
+                                        <li><a href="index.php?bulan=Maret">Maret</a></li>
+                                    </ul>
+                          	</li>
+                        </ul>
+                        </div>
+                      	<div class="body">
+                          <div id="buttons" class="align-center m-l-10 m-b-15 export-hidden"></div>
+                          <table id="datatable" class="table table-bordered table-striped table-hover display nowrap js-exportable" width="100%">
+                              <thead>
+                                  <tr>
+                                      
+                                      <th>BOR Per Hari</th>
+									  <th>BOR RS / BULAN</th>
+                                      <th>LOS</th>
+                                      <th>BTO</th>
+                                      <th>TOI</th>
+                                      <th>NDR</th>
+                                      <th>GDR</th>
+                                      <th>Rata Kunjungan</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      
+                                      <td><?php 
+												
+												
+												$bor1="select ((count(no_rawat)/133)*100) as hasil from kamar_inap where stts_pulang ='-'";
+												$ss=query($bor1);
+												while($row = fetch_array($ss)) {
+												?>
+												<?php echo number_format($row['hasil'],2);?> %
+												<?php
+												}
+												?></td>
+									  <td><?php 
+												
+												$kalender = CAL_GREGORIAN;
+												$bulan1 = date('m');
+												$tahun1 = date('Y');
+												$hari1 = cal_days_in_month($kalender, $bulan1, $tahun1);
+												
+												$kamar = "SELECT COUNT(kd_kamar) as total FROM kamar WHERE statusdata = '1'"; $result1 = fetch_array(query($kamar));
+                                        		$hari = "SELECT SUM(lama) as lama FROM kamar_inap WHERE tgl_keluar LIKE '%{$bulan}%'"; $result2 = fetch_array(query($hari)); 
+                                        		$bor = $result2['lama']/($result1['total']*$hari1); echo number_format($bor*100,2)."%";?></td>
+                                      <td><?php $jml = "SELECT COUNT(no_rawat) as jml FROM kamar_inap WHERE tgl_keluar LIKE '%{$bulan}%'"; $jmlpsn = fetch_array(query($jml));
+                                        		$alos = $result2['lama']/$jmlpsn['jml']; echo number_format($alos,2)." Hari";?></td>
+                                      <td><?php $bto = $jmlpsn['jml']/$result1['total']; echo number_format($bto,2)." Kali";?></td>
+                                      <td><?php $toi = (($result1['total']*30)-$result2['lama'])/$jmlpsn['jml']; echo number_format($toi,2)." Hari";?></td>
+                                      <td><?php $mati = "SELECT COUNT(no_rawat) as mati FROM kamar_inap WHERE stts_pulang = 'Meninggal' AND lama > 2 AND tgl_keluar LIKE '%{$tahun}%'"; $death = fetch_array(query($mati)); $ndr = ($death['mati']/$jmlpsn['jml'])*1000; echo number_format($ndr,2)." Permil";?></td>
+                                      <td><?php $die = "SELECT COUNT(no_rawat) as mati FROM kamar_inap WHERE stts_pulang = 'Meninggal' AND tgl_keluar LIKE '%{$bulan}%'"; $shi = fetch_array(query($die));$gdr = ($shi['mati']/$jmlpsn['jml'])*1000;echo number_format($gdr,2)." Permil";?></td>
+                                      <td><?php $avg = $jmlpsn['jml']/30; echo number_format($avg,2);?></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+						
+                    </div>
+                </div>
+            </div>
+			
+			 
+			
             <!-- Summary -->
             <div class="row clearfix">
                 <!-- Visitors -->
@@ -575,6 +440,9 @@ include_once('layout/sidebar.php');
                     </div>
                 </div>
                 <!-- #END# Visitors -->
+				<!-- Latest Social Trends -->
+                
+                <!-- #END# Latest Social Trends -->
                 <!-- Latest Social Trends -->
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
@@ -793,11 +661,12 @@ include_once('layout/footer.php');
 
 ?>
 
-   
+    <?php if(!$getmodule) { ?>
     <script>
           $(function () {
               new Chart(document.getElementById("bar_chart").getContext("2d"), getChartJs('bar'));
               new Chart(document.getElementById("line_chart").getContext("2d"), getChartJs('line'));
+			  new Chart(document.getElementById("lines_chart").getContext("2d"), getChartJs('lines'));
               initSparkline();
           });
           function getChartJs(type) {
@@ -806,8 +675,8 @@ include_once('layout/footer.php');
                   config = {
                       type: 'bar',
                       data: {
-                          //labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "Sepetember", "Oktober", "November", "Desember"],
-                          labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+                          labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "Sepetember", "Oktober", "November", "Desember"],
+                          //labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
                           datasets: [{
                               label: "Tahun <?php echo $last_year; ?>",
                               data: [
@@ -824,7 +693,7 @@ include_once('layout/footer.php');
                                     }
                                 ?>
                               ],
-                              backgroundColor: 'rgba(0, 188, 212, 0.8)'
+                              backgroundColor: 'rgba( 0, 128, 0, 0.5 )'
                           }, {
                               label: "Tahun <?php echo $year; ?>",
                               data: [
@@ -841,7 +710,7 @@ include_once('layout/footer.php');
                                     }
                                 ?>
                               ],
-                              backgroundColor: 'rgba(233, 30, 99, 0.8)'
+                              backgroundColor: 'rgba( 255, 215, 0, 1 )'
                               }]
                       },
                       options: {
@@ -853,7 +722,7 @@ include_once('layout/footer.php');
               }
               if (type === 'line') {
                   config = {
-                      type: 'bar',
+                      type: 'line',
                       data: {
                           labels: [
                             <?php
@@ -880,7 +749,43 @@ include_once('layout/footer.php');
                                     }
                                 ?>
                               ],
-                              backgroundColor: 'rgba(9, 31, 146, 1)'
+                              backgroundColor: 'rgba( 233, 30, 99, 0.5 )'
+                              }]
+                      },
+                      options: {
+                          responsive: true,
+                          maintainAspectRatio: false,
+                          legend: false
+                      }
+                  }
+              }
+			  if (type === 'lines') {
+                  config = {
+                      type: 'bar',
+                      data: {
+                          labels: [
+                            <?php
+                                $sql_poli1 = "SELECT  (b.nama_brng) as nama, count(a.kode_brng) as jumlaha FROM  detail_pemberian_obat a inner join databarang b on a.kode_brng=b.kode_brng  WHERE tgl_perawatan ='{$date}' group by b.nama_brng order by jumlaha desc limit 10";
+                                $hasil_poli1 = query($sql_poli1);
+                                    while ($data1 = fetch_array ($hasil_poli1)){
+                                        $get_poli1 = '"'.$data1['nama'].'", ';
+                                        echo $get_poli1;
+                                    }
+                            ?>
+                          ],
+                          datasets: [{
+                              label: "Tanggal <?php echo $date; ?>",
+                              data: [
+                                <?php
+                                    $sql1 = "SELECT count(a.kode_brng) as jumlaha FROM  detail_pemberian_obat a inner join databarang b on a.kode_brng=b.kode_brng  WHERE tgl_perawatan ='{$date}' group by b.nama_brng order by jumlaha desc limit 10";
+                                    $hasil1=query($sql1);
+                                    while ($data1 = fetch_array ($hasil1)){
+                                        $jumlah1 = $data1['jumlaha'].', ';
+                                        echo $jumlah1;
+                                    }
+                                ?>
+                              ],
+                              backgroundColor: 'rgba(20, 20, 146, 0.5)'
                               }]
                       },
                       options: {
@@ -892,6 +797,7 @@ include_once('layout/footer.php');
               }
               return config;
           }
+		  
           function initSparkline() {
               $(".sparkline").each(function () {
                   var $this = $(this);
@@ -899,3 +805,4 @@ include_once('layout/footer.php');
               });
           }
     </script>
+<?php } ?>

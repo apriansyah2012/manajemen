@@ -406,6 +406,9 @@
                                     <li>
                                         <a href="<?php echo URL; ?>/laporan/rekRI.php">Kunjungan Rawat Inap </a>
                                     </li>
+									<li>
+                                        <a href="<?php echo URL; ?>/laporan/10besarbooking.php">10 Besar Kunjungan Daroline </a>
+                                    </li>
                                 </ul>
                             </li>
                             
@@ -425,8 +428,7 @@
                            <li>
                                <a href="<?php echo URL; ?>/laporan/cashflow.php">Cash Flow</a>
                            </li>
-						    
-                          </ul>
+						</ul>
 						  
                       </li>
                       <?php } ?>

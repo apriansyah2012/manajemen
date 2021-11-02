@@ -278,7 +278,7 @@ include_once('layout/sidebar.php');
             <!-- Bar chartjs -->
             <div class="card">
                 <div class="header">
-                    <h2>GRAFIK KUNJUNGAN Per TAHUN </h2>
+                    <h2>GRAFIK PERBANDINGAN KUNJUNGAN  <?php echo "PERIODE TAHUN ".$year. "TERHADAP PERIODE TAHUN ".$last_year; ?></h2>
                 </div>
                 <div class="body">
                     <canvas id="bar_chart" height="150"></canvas>
@@ -301,6 +301,14 @@ include_once('layout/sidebar.php');
                 </div>
                 <div class="body">
                     <canvas id="lines_chart" height="150"></canvas>
+                </div>
+            </div>
+			<div class="card">
+                <div class="header ">
+                    <h2>10 BESAR KUNJUNGAN VIA PENDAFTARAN ONLINE </h2>
+                </div>
+                <div class="body">
+                    <canvas id="linesi_chart"  height="150"></canvas>
                 </div>
             </div>
             <!-- #End# Bar chartjs -->
@@ -667,6 +675,7 @@ include_once('layout/footer.php');
               new Chart(document.getElementById("bar_chart").getContext("2d"), getChartJs('bar'));
               new Chart(document.getElementById("line_chart").getContext("2d"), getChartJs('line'));
 			  new Chart(document.getElementById("lines_chart").getContext("2d"), getChartJs('lines'));
+			  new Chart(document.getElementById("linesi_chart").getContext("2d"), getChartJs('linesi'));
               initSparkline();
           });
           function getChartJs(type) {
@@ -749,7 +758,7 @@ include_once('layout/footer.php');
                                     }
                                 ?>
                               ],
-                              backgroundColor: 'rgba( 233, 30, 99, 0.5 )'
+                              backgroundColor: 'rgba( 184, 136, 169, 0.75 )'
                               }]
                       },
                       options: {
@@ -785,13 +794,49 @@ include_once('layout/footer.php');
                                     }
                                 ?>
                               ],
-                              backgroundColor: 'rgba(20, 20, 146, 0.5)'
+                              backgroundColor: 'rgba(34, 139, 34, 1.0)'
                               }]
                       },
                       options: {
                           responsive: true,
                           maintainAspectRatio: false,
                           legend: false
+                      }
+                  }
+              }
+			  if (type === 'linesi') {
+                  config = {
+                      type: 'line',
+                      data: {
+                          labels: [
+                            <?php
+                                $sql_poli11 = "select  a.kd_poli, b.nm_poli as nmpoli1,(a.no_rkm_medis)as total from booking_registrasi a join poliklinik b on a.kd_poli=b.kd_poli where a.limit_reg='1' and a.tanggal_periksa ='{$date}' group by b.nm_poli ORDER BY total DESC  Limit 10";
+                                $hasil_poli11 = query($sql_poli11);
+                                    while ($data11 = fetch_array ($hasil_poli11)){
+                                        $get_poli11 = '"'.$data11['nmpoli1'].'", ';
+                                        echo $get_poli11;
+                                    }
+                            ?>
+                          ],
+                          datasets: [{
+                              label: "Tanggal <?php echo $date; ?>",
+                              data: [
+                                <?php
+                                    $sql11 = "select count(a.no_rkm_medis)as total , a.kd_poli, b.nm_poli from booking_registrasi a join poliklinik b on a.kd_poli=b.kd_poli where a.limit_reg='1' and a.tanggal_periksa ='{$date}' group by b.nm_poli ORDER BY total DESC  Limit 10";
+                                    $hasil11=query($sql11);
+                                    while ($data11 = fetch_array ($hasil11)){
+                                        $jumlah11 = $data11['total'].', ';
+                                        echo $jumlah11;
+                                    }
+                                ?>
+                              ],
+                              backgroundColor: 'rgba(255, 215, 0, 1)'
+                              }]
+                      },
+                      options: {
+                          responsive: true,
+                          maintainAspectRatio: false,
+                          legend: true
                       }
                   }
               }

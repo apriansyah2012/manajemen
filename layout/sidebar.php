@@ -124,7 +124,7 @@
                         </ul>
                     </li>
                     <?php } ?>
-                    <?php if($role == 'Admin' || $role == 'Lab')  { ?>
+                    <?php if($role == 'Admin' || $role == 'Lab'|| $role == 'Keuangan')  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">rate_review</i>
@@ -137,7 +137,7 @@
                         </ul>
                     </li>
                     <?php } ?>
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik' || $_SESSION['jenis_poli'] == 'U0019')  { ?>
+                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik' || $_SESSION['jenis_poli'] == 'U0019'|| $role == 'Keuangan')  { ?>
                       <li>
                           <a href="javascript:void(0);" class="menu-toggle">
                               <i class="material-icons">import_export</i>
@@ -169,7 +169,7 @@
                       </li>
                       <?php } ?>
                     <li class="header">MANAJEMEN</li>
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'Medis' || $role == 'Apotek')  { ?>
+                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'Medis' || $role == 'Apotek'|| $role == 'Keuangan')  { ?>
                     <li>
                         <a href="<?php echo URL; ?>/surat.php">
                             <i class="material-icons">storage</i>
@@ -238,7 +238,7 @@
 	                        </ul>
                     </li>
 			
-                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik')  { ?>
+                    <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik'|| $role == 'Keuangan')  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">update</i>
@@ -370,7 +370,7 @@
                           </ul>
                       </li>
                       <?php } ?>
-                      <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik')  { ?>
+                      <?php if($role == 'Admin' || $role == 'Manajemen' || $role == 'RekamMedik'|| $role == 'Keuangan')  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">update</i>
@@ -409,16 +409,29 @@
 									<li>
                                         <a href="<?php echo URL; ?>/laporan/10besarbooking.php">10 Besar Kunjungan Daroline </a>
                                     </li>
+									<a href="javascript:void(0);" class="menu-toggle">
+								<span>Rujukan FASKES TK I </span>
+								</a>
+								<ul class="ml-menu">
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/rujukanbpjsrj.php">Kunjungan Rujukan BPJS RJ </a>
+                                </li>
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/rujukanbpjs.php">Kunjungan Rujukan PPK TK I BPJS </a>
+                                </li>
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/rujukantunai.php">Kunjungan Rujukan PPK TK I TUNAI </a>
+                                </li>
+								<li>
+                                        <a href="<?php echo URL; ?>/laporan/dataprb.php">Data PRB </a>
+                                </li>
                                 </ul>
+                             </ul>
                             </li>
-                            
-                            
-                            
                           </ul>
-						  
                       </li>
                       <?php } ?>
-					  <?php if($role == 'Admin' )  { ?>
+					  <?php if($role == 'Admin'|| $role == 'Keuangan' )  { ?>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">update</i>
@@ -427,6 +440,29 @@
                         <ul class="ml-menu">
                            <li>
                                <a href="<?php echo URL; ?>/laporan/cashflow.php">Cash Flow</a>
+                           </li>
+						</ul>
+						  
+                      </li>
+                      <?php } ?>
+					  <?php if($role == 'Admin'|| $role == 'Apotek' )  { ?>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">update</i>
+                            <span>Laporan Farmasi</span>
+                        </a>
+                        <ul class="ml-menu">
+                           <li>
+                               <a href="<?php echo URL; ?>/reseprj.php">Resep Rawat Jalan Non Racik</a>
+                           </li>
+						   <li>
+                               <a href="<?php echo URL; ?>/reseprjracik.php">Resep Rawat Jalan Racikan</a>
+                           </li>
+						   <li>
+                               <a href="<?php echo URL; ?>/resepri.php">Resep Rawat Inap Non Racik</a>
+                           </li>
+						   <li>
+                               <a href="<?php echo URL; ?>/resepriracik.php">Resep Inap Jalan Racikan</a>
                            </li>
 						</ul>
 						  

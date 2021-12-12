@@ -56,7 +56,7 @@ include_once('../layout/sidebar.php');
 									and c.kd_dokter = h.kd_dokter
 									and f.kd_bangsal=g.kd_bangsal
 									and a.no_rawat=i.no_rawat
-									and c.kd_pj=j.kd_pj AND c.kd_pj ='A00'
+									and c.kd_pj=j.kd_pj AND j.kategori ='TUNAI'
 									  ";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
                                   $sql .= " AND b.tgl_masuk BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";

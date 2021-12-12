@@ -54,7 +54,7 @@ include_once('../layout/sidebar.php');
                                     <tr>
                                          <td><?php echo $no ?></td>
                                         <td><?php echo $row['1']; ?></td>
-                                        <td><?php echo $ttotal=$row['ttlrek']; ?></td>
+                                        <td><?php echo rupiah($ttotal=$row['ttlrek']); ?></td>
                                         
                                     </tr>
                                 <?php
@@ -91,7 +91,7 @@ include_once('../layout/sidebar.php');
 									
                                          <td><?php echo $no ;?></td>
                                        <td><?php echo $ttotal=$row['1']; ?></td>
-										<td><?php echo $ttotal=$row['ttlkredit']; ?></td>
+										<td><?php echo $ttotal=rupiah($row['ttlkredit']); ?></td>
                                         
                                     </tr>
                                 <?php
@@ -127,7 +127,7 @@ include_once('../layout/sidebar.php');
                                     <tr>
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row['1']; ?></td>
-                                        <td><?php echo $ttotal=$row['ttldebet']; ?></td>
+                                        <td><?php echo $ttotal=rupiah($row['ttldebet']); ?></td>
                                         
                                     </tr>
                                 <?php
@@ -170,4 +170,17 @@ include_once('../layout/sidebar.php');
 
 <?php
 include_once('../layout/footer.php');
+?>
+<?php 
+//membuat format rupiah dengan PHP
+//tutorial www.malasngoding.com
+
+function rupiah($angka){
+	
+	$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+	return $hasil_rupiah;
+
+}
+
+
 ?>

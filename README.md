@@ -4,7 +4,8 @@
          CREATE TABLE roles (
            username varchar(60) NOT NULL,
            role varchar(45) NOT NULL,
-           cap varchar(20) NOT NULL
+           cap varchar(20) NOT NULL,
+           module text(0) NOT NULL
          ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
          INSERT INTO roles VALUES username = 'ISIKANDENGANUSERNAMEANDA', role='Admin', cap='',module=''

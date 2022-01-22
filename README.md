@@ -1,5 +1,6 @@
 # Khanza-Lite Manajemen
 1. Tambahkan Table Roles. 
+
          CREATE TABLE roles (
            username varchar(60) NOT NULL,
            role varchar(45) NOT NULL,

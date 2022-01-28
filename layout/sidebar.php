@@ -391,9 +391,18 @@
                                     <li>
                                         <a href="<?php echo URL; ?>/laporan/regigd.php">Kunjungan IGD</a>
                                     </li>
+				    <li>
+                                        <a href="<?php echo URL; ?>/laporan/regfisio.php">Kunjungan FISIOTERAPI</a>
+                                    </li>
+				    <li>
+                                        <a href="<?php echo URL; ?>/laporan/regrehab.php">Kunjungan REHAB MEDIK</a>
+                                    </li>
+
+				    </li>
 									<li>
                                         <a href="<?php echo URL; ?>/laporan/reghd.php">Kunjungan HEMODIALISA</a>
                                     </li>
+
 									<li>
                                         <a href="<?php echo URL; ?>/laporan/regvk.php">Kunjungan VK</a>
                                     </li>
@@ -440,6 +449,23 @@
                         <ul class="ml-menu">
                            <li>
                                <a href="<?php echo URL; ?>/laporan/cashflow.php">Cash Flow</a>
+                           </li>
+						</ul>
+						  
+                      </li>
+                      <?php } ?>
+					   <?php if($role == 'Admin'|| $role == 'Manajemen' )  { ?>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">update</i>
+                            <span>Diagnosa Penyakit</span>
+                        </a>
+                        <ul class="ml-menu">
+                           <li>
+                               <a href="<?php echo URL; ?>/laporan/10besarpenyakit.php">Diagnosa Rumah Sakit </a>
+                           </li>
+						   <li>
+                               <a href="<?php echo URL; ?>/laporan/10besarpenyakitkamar.php">Diagnosa Kamar </a>
                            </li>
 						</ul>
 						  

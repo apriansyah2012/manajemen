@@ -1,4 +1,4 @@
-9l<?php
+<?php
 /***
 * SIMRS Khanza Lite from version 0.1 Beta
 * About : Porting of SIMRS Khanza by Windiarto a.k.a Mas Elkhanza as web and mobile app.
@@ -30,10 +30,13 @@ include_once('../layout/sidebar.php');
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="rl-5-2.php?tahun=2016">2016</a></li>
-                                        <li><a href="rl-5-2.php?tahun=2017">2017</a></li>
                                         <li><a href="rl-5-2.php?tahun=2018">2018</a></li>
                                         <li><a href="rl-5-2.php?tahun=2019">2019</a></li>
+					<li><a href="rl-5-2.php?tahun=2020">2020</a></li>
+					<li><a href="rl-5-2.php?tahun=2021">2021</a></li>
+					<li><a href="rl-5-2.php?tahun=2022">2022</a></li>
+
+					
                                     </ul>
                                 </li>
                             </ul>                          
@@ -65,8 +68,8 @@ include_once('../layout/sidebar.php');
                                   
                                 ?>
                                     <tr>
-                                        <td>6307012</td>
-                                      	<td>63prop</td>
+                                        <td>3215056</td>
+                                      	<td>32prop</td>
                                       	<td><?php 
                                   		$nm_its = fetch_array(query("SELECT setting.kabupaten FROM setting"));echo $nm_its['0']; ?></td>
                                       	<td><?php 

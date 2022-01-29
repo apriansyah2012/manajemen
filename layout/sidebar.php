@@ -462,11 +462,15 @@
                         </a>
                         <ul class="ml-menu">
                            <li>
-                               <a href="<?php echo URL; ?>/laporan/10besarpenyakit.php">Diagnosa Rumah Sakit </a>
+                               <a href="<?php echo URL; ?>/laporan/10besarpenyakit.php">Diagnosa Ranap Rumah Sakit </a>
                            </li>
 						   <li>
                                <a href="<?php echo URL; ?>/laporan/10besarpenyakitkamar.php">Diagnosa Kamar </a>
                            </li>
+				<li>
+                               <a href="<?php echo URL; ?>/laporan/10besarpenyakitbedah.php">Diagnosa Kasus Bedah </a>
+                           </li>
+
 						</ul>
 						  
                       </li>

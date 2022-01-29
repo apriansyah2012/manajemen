@@ -1,7 +1,7 @@
 <?php
 
 
-$title = 'DATA 10 BESAR PENYAKIT PER KAMAR';
+$title = 'DATA 10 BESAR PENYAKIT KASUS BEDAH';
 include_once('../config.php');
 include_once('../layout/header.php');
 include_once('../layout/sidebar.php');
@@ -14,7 +14,7 @@ include_once('../layout/sidebar.php');
                     <div class="card">
                         <div class="header">
                             <h2>
-                                DATA 10 BESAR PENYAKIT PER KAMAR
+                                DATA 10 BESAR PENYAKIT KASUS BEDAH
                                 <small><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
                             </h2>
                         </div>
@@ -45,7 +45,7 @@ include_once('../layout/sidebar.php');
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "SELECT a.kd_kamar,c.kd_bangsal,d.nm_bangsal,LEFT(a.diagnosa_akhir, 5) as kode, b.nm_penyakit,sum(e.stts_daftar='Lama') As Lama, sum(e.stts_daftar='Baru') As Baru, sum(f.jk='L') As laki, sum(f.jk='P') As perempuan, sum(a.stts_pulang IN( 'Atas Persetujuan Dokter')) As Atas_Persetujuan_Dokter,sum(a.stts_pulang IN( 'Membaik')) As Membaik,sum(a.stts_pulang IN( 'Sehat')) As Sehat, sum(a.stts_pulang IN( 'Sembuh')) As Sembuh, sum(a.stts_pulang IN( 'Atas Permintaan Sendiri')) As Atas_Permintaan_Sendiri, sum(a.stts_pulang IN( 'APS')) As APS, sum(a.stts_pulang IN( 'Meninggal')) As Meninggal, sum(a.stts_pulang IN( '+')) As plush, sum(a.stts_pulang IN( 'Rujuk')) As Rujuk,count(a.diagnosa_akhir) as jumlahnya  FROM kamar_inap a join penyakit b join kamar c join bangsal d Join reg_periksa e Join pasien f  where a.diagnosa_akhir=b.kd_penyakit AND a.kd_kamar = c.kd_kamar AND c.kd_bangsal=d.kd_bangsal AND a.no_rawat= e.no_rawat AND e.no_rkm_medis=f.no_rkm_medis  AND b.nm_penyakit <>'-'
+                                $sql = "SELECT a.kd_kamar,c.kd_bangsal,d.nm_bangsal, LEFT(a.diagnosa_akhir, 5) as kode, b.nm_penyakit,sum(e.stts_daftar='Lama') As Lama, sum(e.stts_daftar='Baru') As Baru, sum(f.jk='L') As laki, sum(f.jk='P') As perempuan, sum(a.stts_pulang IN( 'Atas Persetujuan Dokter')) As Atas_Persetujuan_Dokter,sum(a.stts_pulang IN( 'Membaik')) As Membaik,sum(a.stts_pulang IN( 'Sehat')) As Sehat, sum(a.stts_pulang IN( 'Sembuh')) As Sembuh, sum(a.stts_pulang IN( 'Atas Permintaan Sendiri')) As Atas_Permintaan_Sendiri, sum(a.stts_pulang IN( 'APS')) As APS, sum(a.stts_pulang IN( 'Meninggal')) As Meninggal, sum(a.stts_pulang IN( '+')) As plush, sum(a.stts_pulang IN( 'Rujuk')) As Rujuk,count(a.diagnosa_akhir) as jumlahnya  FROM kamar_inap a join penyakit b join kamar c join bangsal d Join reg_periksa e Join pasien f  where a.diagnosa_akhir=b.kd_penyakit AND a.kd_kamar = c.kd_kamar AND c.kd_bangsal=d.kd_bangsal AND a.no_rawat= e.no_rawat AND e.no_rkm_medis=f.no_rkm_medis  AND b.nm_penyakit <>'-'  AND c.kd_bangsal IN ('MWR01','MWR02','MWR03','MWR04','MWR05','MWR06','MWR07')   And d.status ='1' AND NOT a.diagnosa_akhir IN ('B97.2','B34.2','j90','j18.9')
 								";
                                 if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) {
                                   $sql .= " AND a.tgl_keluar BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'";

@@ -497,7 +497,25 @@
 						</ul>
 						  
                       </li>
+					  <?php } ?>
+                      <?php if($role == 'Admin' || $role == 'Manajemen' )  { ?>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">update</i>
+                            <span>Laporan Laboratorium</span>
+                        </a>
+                        <ul class="ml-menu">
+                           <li>
+                               <a href="<?php echo URL; ?>/laporan/pcr.php">Pemeriksaan PCR</a>
+                           </li>
+						   <li>
+                               <a href="<?php echo URL; ?>/laporan/antigen.php">Pemeriksaan Antigen</a>
+                           </li>
+						</ul>
+						  
+                      </li>
                       <?php } ?>
+                      
                       <?php if($role == 'Admin' || $role == 'Manajemen')  { ?>
                     	<li>
                           <a href="javascript:void(0);" class="menu-toggle">

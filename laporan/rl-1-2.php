@@ -1,4 +1,12 @@
 <?php
+/***
+* SIMRS Khanza Lite from version 0.1 Beta
+* About : Porting of SIMRS Khanza by Windiarto a.k.a Mas Elkhanza as web and mobile app.
+* Last modified: 02 Pebruari 2018
+* Author : drg. Faisol Basoro
+* Email : drg.faisol@basoro.org
+* Licence under GPL
+***/
 
 $title = 'Laporan';
 include_once('../config.php');
@@ -25,11 +33,8 @@ include_once('../layout/sidebar.php');
                                 	<i class="material-icons">arrow_drop_down_circle</i>
                                 </a>
                                     <ul class="dropdown-menu pull-right">
-                                       	<li><a href="rl-1-2.php?tahun=2018">2018</a></li>
-					<li><a href="rl-1-2.php?tahun=2019">2019</a></li>
-					<li><a href="rl-1-2.php?tahun=2020">2020</a></li>
-					<li><a href="rl-1-2.php?tahun=2021">2021</a></li>
-					<li><a href="rl-1-2.php?tahun=2022">2022</a></li>
+                                       
+                                        <li><a href="rl-1-2.php?tahun=2020">2020</a></li>
                                     </ul>
                           	</li>
                         </ul>

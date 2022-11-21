@@ -47,9 +47,9 @@ include_once('../layout/sidebar.php');
                                 <thead>
                                     <tr>
                                         <th>Kode RS</th>
-                                      	<th>Kode<br>Propinsi</th>
-                                      	<th>Kab/Kota</th>
                                       	<th>Nama RS</th>
+					<th>Kab/Kota</th>
+					<th>Kode<br>Propinsi</th>
                                       	<th>Tahun</th>
                                       	<th>No</th>
                                         <th>Jenis Kegiatan</th>
@@ -69,11 +69,13 @@ include_once('../layout/sidebar.php');
                                 ?>
                                     <tr>
                                         <td>3215056</td>
-                                      	<td>32prop</td>
-                                      	<td><?php 
-                                  		$nm_its = fetch_array(query("SELECT setting.kabupaten FROM setting"));echo $nm_its['0']; ?></td>
+                                      	
+                                      	
                                       	<td><?php 
                                   		$bpt = fetch_array(query("SELECT setting.nama_instansi FROM setting"));echo $bpt['0']; ?></td>
+					<td><?php 
+                                  		$nm_its = fetch_array(query("SELECT setting.kabupaten FROM setting"));echo $nm_its['0']; ?></td>
+					<td>32prop</td>
                                         <td><?php echo $tahun; ?></td>
                                         <td><?php echo $no; ?></td>
                                         <td><?php echo $row[1]; ?></td>

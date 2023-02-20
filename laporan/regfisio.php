@@ -50,7 +50,7 @@ include_once('../layout/sidebar.php');
                                 </thead>
                                 <tbody>
                                 <?php
-                                $sql = "select a.kd_poli, b.nm_poli,a.kd_dokter,c.nm_dokter, sum(a.status_poli ='Lama') as lama, sum(a.status_poli ='Baru') as baru, sum(a.kd_pj='A00') as umum, sum(a.kd_pj IN ('B01',
+                                $sql = "select a.kd_poli, b.nm_poli,a.kd_dokter,c.nm_dokter, sum(a.stts_daftar ='Lama') as lama, sum(a.stts_daftar ='Baru') as baru, sum(a.kd_pj='A00') as umum, sum(a.kd_pj IN ('B01',
 'B02',
 'B71',
 'B03',

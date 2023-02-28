@@ -22,7 +22,7 @@ include_once('../layout/sidebar.php');
                         <div class="header">
                             <h2>
                               LAPORAN RL 5.2 (Kunjungan Rawat Jalan) 
-                                <small><?php if(isset($_GET['tahun'])) { $tahun = $_GET['tahun']; } else { $tahun = date("Y",strtotime($date)); }; echo "Periode ".$tahun; ?></small>
+                                <small><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -32,9 +32,9 @@ include_once('../layout/sidebar.php');
                                     <ul class="dropdown-menu pull-right">
                                         <li><a href="rl-5-2.php?tahun=2018">2018</a></li>
                                         <li><a href="rl-5-2.php?tahun=2019">2019</a></li>
-					<li><a href="rl-5-2.php?tahun=2020">2020</a></li>
-					<li><a href="rl-5-2.php?tahun=2021">2021</a></li>
-					<li><a href="rl-5-2.php?tahun=2022">2022</a></li>
+										<li><a href="rl-5-2.php?tahun=2020">2020</a></li>
+										<li><a href="rl-5-2.php?tahun=2021">2021</a></li>
+										<li><a href="rl-5-2.php?tahun=2022">2022</a></li>
 
 					
                                     </ul>
@@ -48,9 +48,8 @@ include_once('../layout/sidebar.php');
                                     <tr>
                                         <th>Kode RS</th>
                                       	<th>Nama RS</th>
-					<th>Kab/Kota</th>
-					<th>Kode<br>Propinsi</th>
-                                      	<th>Tahun</th>
+										<th>Kab/Kota</th>
+										<th>Kode<br>Propinsi</th>
                                       	<th>No</th>
                                         <th>Jenis Kegiatan</th>
                                         <th>Jumlah</th>
@@ -58,10 +57,12 @@ include_once('../layout/sidebar.php');
                                 </thead>
                                 <tbody>
                                 <?php
+								$tgl_awal = isset($_POST['tgl_awal'])?$_POST['tgl_awal']:null;
+                                $tgl_akhir = isset($_POST['tgl_akhir'])?$_POST['tgl_akhir']:null;
                                 $sql = 
                                 "SELECT reg_periksa.kd_poli , poliklinik.nm_poli , pasien.umur
                                 FROM reg_periksa , poliklinik , pasien
-                                WHERE reg_periksa.kd_poli = poliklinik.kd_poli AND reg_periksa.no_rkm_medis = pasien.no_rkm_medis AND reg_periksa.tgl_registrasi LIKE '%{$tahun}%' AND reg_periksa.kd_poli !='-' GROUP BY reg_periksa.kd_poli";
+                                WHERE reg_periksa.kd_poli = poliklinik.kd_poli AND reg_periksa.no_rkm_medis = pasien.no_rkm_medis AND reg_periksa.tgl_registrasi BETWEEN '$tgl_awal' AND '$tgl_akhir' AND reg_periksa.kd_poli !='-' GROUP BY reg_periksa.kd_poli";
                                 $query = query($sql);
                                 $no = 1;
                                 while($row = fetch_array($query)) { 
@@ -76,11 +77,11 @@ include_once('../layout/sidebar.php');
 					<td><?php 
                                   		$nm_its = fetch_array(query("SELECT setting.kabupaten FROM setting"));echo $nm_its['0']; ?></td>
 					<td>32prop</td>
-                                        <td><?php echo $tahun; ?></td>
+                                       
                                         <td><?php echo $no; ?></td>
                                         <td><?php echo $row[1]; ?></td>
                                       	<td><?php
-                                  		$awal_tahun = fetch_array(query("SElECT COUNT(reg_periksa.no_rawat) from reg_periksa where reg_periksa.tgl_registrasi BETWEEN '{$tahun}-01-01' AND '{$tahun}-12-31' AND reg_periksa.kd_poli = '$row[0]'")); echo $awal_tahun['0']; ?></td>
+                                  		$awal_tahun = fetch_array(query("SElECT COUNT(reg_periksa.no_rawat) from reg_periksa where reg_periksa.tgl_registrasi BETWEEN '$tgl_awal' AND '$tgl_akhir' AND reg_periksa.kd_poli = '$row[0]'")); echo $awal_tahun['0']; ?></td>
                                      	</tr>
                                 <?php
                                 $no++;
@@ -88,6 +89,42 @@ include_once('../layout/sidebar.php');
                                 ?>
                                 </tbody>
                             </table>
+							<div class="row clearfix">
+                                <form method="post" action="">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="tgl_awal" class="datepicker form-control" placeholder="Pilih tanggal awal...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="tgl_akhir" class="datepicker form-control" placeholder="Pilih tanggal akhir...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                          <select name="kd_pj" class="form-control show-tick">
+                                              <option value="">Semua</option>
+                                              <option value="A01">Umum</option>
+                                              <option value="A02">BPJS</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="submit" class="btn bg-blue btn-block btn-lg waves-effect">
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
                             <!--       
                             <div class="row clearfix">
                                 <form method="post" action="">

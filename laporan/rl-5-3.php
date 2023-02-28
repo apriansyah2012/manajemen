@@ -22,7 +22,7 @@ include_once('../layout/sidebar.php');
                         <div class="header">
                             <h2>
                                 LAPORAN RL 5.3 (Daftar 10 Besar Penyakit Rawat Inap)
-                                <small><?php if(isset($_POST['kd_pj']) && $_POST['kd_pj'] == 'A01') { echo 'Cara Bayar UMUM, '; } ?><?php if(isset($_POST['kd_pj']) && $_POST['kd_pj'] == 'A02') { echo 'Cara Bayar BPJS, '; } ?><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
+                                <small><?php if(isset($_POST['kd_pj']) && $_POST['kd_pj'] == 'A00') { echo 'Cara Bayar UMUM, '; } ?><?php if(isset($_POST['kd_pj']) && $_POST['kd_pj'] == 'A52') { echo 'Cara Bayar BPJS, '; } ?><?php if(isset($_POST['tgl_awal']) && isset($_POST['tgl_akhir'])) { echo "Periode ".date("d-m-Y",strtotime($_POST['tgl_awal']))." s/d ".date("d-m-Y",strtotime($_POST['tgl_akhir'])); } ?></small>
                             </h2>
                         </div>
                         <div class="body">

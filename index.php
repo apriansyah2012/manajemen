@@ -438,6 +438,10 @@ include_once('layout/sidebar.php');
                                       
                                       <th>RUANGAN</th>
 									  <th>TT</th>
+									  <th>TT KELAS I</th>
+									  <th>TT KELAS II</th>
+									  <th>TT KELAS III</th>
+									  <th>TT KELAS VIP</th>
                                       <th>JML PASIEN</th>
                                       <th>BOR</th>
                                       
@@ -449,10 +453,42 @@ include_once('layout/sidebar.php');
                                       <td>PAVILIUN LANTAI III</td>
 									  <td><?php
 											
-											$kamar3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%' AND statusdata='1'"));
+											$kamar3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%'    AND statusdata='1'"));
 											?>
 											<span class="pull-midle"><b>
 											<?php echo $kamar3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
 											?></b> <small>BED</small></span>
 									  </td>
 									  <td><?php
@@ -483,6 +519,38 @@ include_once('layout/sidebar.php');
 											<?php echo $kamar2['jumlah']; 
 											?></b> <small>BED</small></span>
 										</td>
+										<td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P2%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P2%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P2%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P2%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
 									  <td><?php
 											$pas2 = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'P2%' AND statusdata='1' AND status='ISI'"));
 											
@@ -509,6 +577,38 @@ include_once('layout/sidebar.php');
 											<?php echo $kamar1['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  <td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P1%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P1%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P1%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P1%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
 									  <td><?php
 											$pas1 = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'P1%' AND statusdata='1' AND status='ISI'"));
 											
@@ -535,6 +635,38 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarANG['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  <td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'ANG%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'ANG%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'ANG%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'ANG%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
 									  <td><?php
 											$pasANG = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'ANG%' AND statusdata='1' AND status='ISI'"));
 											
@@ -561,6 +693,38 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarMEL['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  <td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MEL%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MEL%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MEL%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MEL%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
 									  <td><?php
 											$mel3 = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'MEL%' AND statusdata='1' AND status='ISI'"));
 											
@@ -587,6 +751,38 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarFLM['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  <td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'FLM%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'FLM%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'FLM%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'FLM%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
 									  <td><?php
 											$flam3 = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'FLM%' AND statusdata='1' AND status='ISI'"));
 											
@@ -611,6 +807,38 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarMWR['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  <td><?php
+											
+											$TT1 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MWR%'  AND kelas ='Kelas 1'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT1['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT2 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MWR%'  AND kelas ='Kelas 2'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT2['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MWR%'  AND kelas ='Kelas 3'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT3['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
+									  <td><?php
+											
+											$TT4 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'MWR%'  AND kelas ='Kelas VIP'  AND statusdata='1'"));
+											?>
+											<span class="pull-midle"><b>
+											<?php echo $TT4['jumlah']; 
+											?></b> <small>BED</small></span>
+									  </td>
 									  <td><?php
 											$MWR = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'MWR%' AND statusdata='1' AND status='ISI'"));
 											
@@ -637,6 +865,16 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarPERT['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  </td>
+									 </td>
+									 <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
 									  <td><?php
 											$PERT = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'Babyterm%' AND statusdata='1' AND status='ISI'"));
 											
@@ -663,6 +901,16 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarPERB['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  </td>
+									 </td>
+									 <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
 									  <td><?php
 											$PERB = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'Box%' AND statusdata='1' AND status='ISI'"));
 											
@@ -689,6 +937,16 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarPERI['jumlah']; 
 											?></b> <small>BED</small></span>
 								  </td>
+								  </td>
+									 </td>
+									 <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
 									  <td><?php
 											$PERI = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'incu%' AND statusdata='1' AND status='ISI'"));
 											
@@ -715,6 +973,15 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarICU['jumlah']; 
 											?></b> <small>BED</small></span>
 								     </td>
+									 </td>
+									 <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
 									  <td><?php
 											$PASICU = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'IC%' AND statusdata='1' AND status='ISI'"));
 											
@@ -741,6 +1008,14 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarNICU['jumlah']; 
 											?></b> <small>BED</small></span>
 								     </td>
+									 <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
 									  <td><?php
 											$PASNICU = fetch_assoc(query("select count(status)as Status from kamar where kd_kamar LIKE 'NI%' AND statusdata='1' AND status='ISI'"));
 											
@@ -767,6 +1042,15 @@ include_once('layout/sidebar.php');
 											<?php echo $kamarTOT['jumlah']-3; 
 											?></b> <small>BED</small></span>
 								     </td>
+									 </td>
+									 <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
+									  <td>
+									  </td>
 									  <td><?php
 											$PASTOT = fetch_assoc(query("SELECT count(stts_pulang) as pulang FROM kamar_inap WHERE stts_pulang = '-'"));
 											
@@ -853,7 +1137,7 @@ include_once('layout/sidebar.php');
 											$bulan1 = date('m');
 											$tahun1 = date('Y');
 											$hari1 = cal_days_in_month($kalender, $bulan1, $tahun1);
-											$kamar3 = fetch_assoc(query("SELECT stts_pulang FROM kamar_inap WHERE stts_pulang = '-' AND kd_kamar LIKE 'P3%' "));
+											$kamar3 = fetch_assoc(query("select count(kd_kamar)AS jumlah from kamar where kd_kamar LIKE 'P3%' AND statusdata='1'"));
 											?>
 											<span class="pull-midle"><b>
 											<?php echo $kamar3['jumlah']; 
